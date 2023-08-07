@@ -26,6 +26,8 @@ Ideal para hogares y oficinas que buscan mejorar la eficiencia energética y la 
 
 ## Configuración previa
 
+**Conectividad Wi-Fi - Obtén la Hora en Tiempo Real :**
+
 - Antes de compilar el código, asegúrate de configurar el archivo [`config.h`](https://github.com/Leo-Spj/Control-de-Persiana-ESP32/blob/main/config.h) con los datos de la red WiFi a la que deseas conectar. Luego, colócalo dentro de la carpeta `persiana`. 
 
 
