@@ -19,9 +19,9 @@ Ideal para hogares y oficinas que buscan mejorar la eficiencia energética y la 
 - **Motor DC 30RPM 3V**: Motor de bajo consumo y alta eficiencia.
 
 
-| Motor DC 30RPM 3V (Link) | ESP32 (Link) |
-| --- | --- |
-| [![Motor](https://github.com/Leo-Spj/Domotica-Persiana-ESP32/blob/main/imagenes/motorDC30rpm3v.png)](https://www.aliexpress.us/item/33022320164.html?spm=a2g0o.order_list.order_list_main.5.4fce1802WRV2AW&gatewayAdapt=glo2usa) | [![ESP32](https://github.com/Leo-Spj/Domotica-Persiana-ESP32/blob/main/imagenes/esp32.png)](https://www.aliexpress.us/item/4000071762309.html?spm=a2g0o.order_list.order_list_main.20.4fce1802WRV2AW&gatewayAdapt=glo2usa) |
+| Motor DC 30RPM 3V (Link) | ESP32 (Link) | Controlador de Motor (Link) |
+| --- | --- | --- |
+| [![Motor](https://github.com/Leo-Spj/Domotica-Persiana-ESP32/blob/main/imagenes/motorDC30rpm3v.png)](https://www.aliexpress.us/item/33022320164.html?spm=a2g0o.order_list.order_list_main.5.4fce1802WRV2AW&gatewayAdapt=glo2usa) | [![ESP32](https://github.com/Leo-Spj/Domotica-Persiana-ESP32/blob/main/imagenes/esp32.png)](https://www.aliexpress.us/item/4000071762309.html?spm=a2g0o.order_list.order_list_main.20.4fce1802WRV2AW&gatewayAdapt=glo2usa) | [![Controlador de motor](https://github.com/Leo-Spj/Domotica-Persiana-ESP32/blob/main/imagenes/controladorMotor.png)](https://www.aliexpress.us/item/4000083406292.html?spm=a2g0o.cart.0.0.582b7a9dyz7UiZ&mp=1&gatewayAdapt=glo2usa)
 
 
 ## Configuración previa
