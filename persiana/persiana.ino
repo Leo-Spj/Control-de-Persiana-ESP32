@@ -14,6 +14,10 @@ const int   daylightOffset_sec = 0;  // Ajusta si tienes horario de verano (no n
 const int Abrir = 2;
 const int Cerrar = 4;
 
+// botones para abrir y cerrar la persiana
+const int BotonAbrir = 16;
+const int BotonCerrar = 17;
+
 void setup() {
     Serial.begin(115200);
 
@@ -23,6 +27,10 @@ void setup() {
 
     digitalWrite(Abrir, LOW);
     digitalWrite(Cerrar, LOW);
+
+    // Configurar botones
+    pinMode(BotonAbrir, INPUT);
+    pinMode(BotonCerrar, INPUT);
     
     // Conectarse a WiFi
     Serial.println("Conectando WiFi...");
@@ -64,7 +72,7 @@ void loop() {
     time(&now);
     localtime_r(&now, &timeinfo);
     
-    Serial.printf("\nHora: %02d:%02d:%02d\n", timeinfo.tm_hour, timeinfo.tm_min, timeinfo.tm_sec);
+    // Serial.printf("\nHora: %02d:%02d:%02d\n", timeinfo.tm_hour, timeinfo.tm_min, timeinfo.tm_sec);
     
     static int segundosAcumulados = 6; // punto medio para que se abra o cierre la persiana
     static bool abriendo = false;
@@ -87,7 +95,7 @@ void loop() {
         }
     }
 
-    // si la hora actual es mayor a las 7:00 pm y menor a las 11:00 pm, se cierra la persiana
+    // si la hora actual es mayor a las 8:00 pm y menor a las 11:00 pm, se cierra la persiana
     if (timeinfo.tm_hour >= 20 && timeinfo.tm_hour < 23) {
         if (cerrando) {
             if (segundosAcumulados <= 0) {
@@ -103,7 +111,24 @@ void loop() {
             abriendo = false;
         }
     } 
+  
+
+    // si no se presiona ningún botón, se detiene la persiana
+    digitalWrite(BotonAbrir, LOW);
+    digitalWrite(BotonCerrar, LOW);
+
+    // si se presiona el botón de abrir, se abre la persiana
+    while (digitalRead(BotonAbrir) == HIGH) {
+        abrirPersiana();
+        Serial.println("Boton abrir");
+    } 
+
+    // si se presiona el botón de cerrar, se cierra la persiana
+    while (digitalRead(BotonCerrar) == HIGH) {
+        cerrarPersiana();
+        Serial.println("Boton cerrar");
+    }
 
     detenerPersiana(); // detener la persiana
-    delay(3000); 
+    delay(200);
 }
