@@ -18,5 +18,5 @@ Este proyecto es ideal para **hogares** y **oficinas** que buscan mejorar la efi
 
 | Motor DC 30RPM 3V (Link) | ESP32 (Link) |
 | --- | --- |
-| [![Motor](imagenes\motorDC30rpm3v.png)](https://www.aliexpress.us/item/33022320164.html?spm=a2g0o.order_list.order_list_main.5.4fce1802WRV2AW&gatewayAdapt=glo2usa) | [![ESP32](imagenes\esp32.png)](https://www.aliexpress.us/item/4000071762309.html?spm=a2g0o.order_list.order_list_main.20.4fce1802WRV2AW&gatewayAdapt=glo2usa) |
+| [![Motor](./imagenes\motorDC30rpm3v.png)](https://www.aliexpress.us/item/33022320164.html?spm=a2g0o.order_list.order_list_main.5.4fce1802WRV2AW&gatewayAdapt=glo2usa) | [![ESP32](./imagenes\esp32.png)](https://www.aliexpress.us/item/4000071762309.html?spm=a2g0o.order_list.order_list_main.20.4fce1802WRV2AW&gatewayAdapt=glo2usa) |
 
