@@ -1,15 +1,18 @@
 # Control de Persiana con ESP32
 
-## Descripción
-Este proyecto se centra en la automatización y control inteligente de persianas utilizando la plataforma **ESP32**. A través de tecnologías inalámbricas como WiFi y/o Bluetooth, el usuario puede controlar remotamente el movimiento de las persianas, ajustándolas a la posición deseada y optimizando la entrada de luz natural en el ambiente. Adicionalmente, gracias a la flexibilidad del ESP32, el sistema puede ser expandido para incluir sensores de luminosidad, permitiendo ajustes automáticos basados en las condiciones de luz externa.
+**Control de Persiana con ESP32**
 
-## Características
-- **Control Remoto**: Manipulación de persianas a través de conexión inalámbrica.
-- **Programación**: Establece horarios de apertura y cierre según tus necesidades.
-- **Ajuste Automático**: Ajusta la posición de las persianas según la luminosidad externa.
+Este proyecto automatiza y controla persianas de forma inteligente utilizando ESP32. Mediante WiFi y/o Bluetooth, el usuario puede manejar las persianas remotamente y ajustar su posición para optimizar la entrada de luz natural. 
 
-## Aplicaciones
-Este proyecto es ideal para **hogares** y **oficinas** que buscan mejorar la eficiencia energética y la comodidad. Al automatizar las persianas, los usuarios pueden maximizar el uso de la luz natural, reduciendo la necesidad de iluminación artificial y, por ende, el consumo energético. Además, el sistema puede mejorar la seguridad al simular presencia, cerrando y abriendo las persianas en horarios programados.
+**Características:**
+- Control remoto inalámbrico de las persianas.
+- Programación de horarios de apertura y cierre.
+- Ajuste automático según la luminosidad externa.
+
+**Aplicaciones:**
+
+Ideal para hogares y oficinas que buscan mejorar la eficiencia energética y la comodidad. Maximiza el uso de luz natural reduciendo el consumo de energía.
+
 
 ## Materiales
 - **ESP32**: Microcontrolador de bajo costo y alto rendimiento.
@@ -19,4 +22,10 @@ Este proyecto es ideal para **hogares** y **oficinas** que buscan mejorar la efi
 | Motor DC 30RPM 3V (Link) | ESP32 (Link) |
 | --- | --- |
 | [![Motor](https://github.com/Leo-Spj/Domotica-Persiana-ESP32/blob/main/imagenes/motorDC30rpm3v.png)](https://www.aliexpress.us/item/33022320164.html?spm=a2g0o.order_list.order_list_main.5.4fce1802WRV2AW&gatewayAdapt=glo2usa) | [![ESP32](https://github.com/Leo-Spj/Domotica-Persiana-ESP32/blob/main/imagenes/esp32.png)](https://www.aliexpress.us/item/4000071762309.html?spm=a2g0o.order_list.order_list_main.20.4fce1802WRV2AW&gatewayAdapt=glo2usa) |
+
+
+## Configuración previa
+
+- El archivo [`config.h`](https://github.com/Leo-Spj/Control-de-Persiana-ESP32/blob/main/config.h) deberá ser configurado con los datos de la red WiFi a conectarse. Este achivo deberá ser colocado dentro de la carpeta `persiana` antes de compilar el código.
+
 
