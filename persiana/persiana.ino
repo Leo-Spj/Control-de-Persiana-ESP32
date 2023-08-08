@@ -11,12 +11,12 @@ const long  gmtOffset_sec = -5 * 3600;  // (Lima, Perú) Ajusta según tu zona h
 const int   daylightOffset_sec = 0;  // Ajusta si tienes horario de verano (no necesario para Lima)
 
 // pin de salida para el motor
-const int Abrir = 2;
-const int Cerrar = 4;
+const int Abrir = 11;
+const int Cerrar = 10;
 
 // botones para abrir y cerrar la persiana
-const int BotonAbrir = 16;
-const int BotonCerrar = 17;
+const int BotonAbrir = 48;
+const int BotonCerrar = 45;
 
 void setup() {
     Serial.begin(115200);
