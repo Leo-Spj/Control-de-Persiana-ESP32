@@ -80,7 +80,7 @@ void cerrarPersiana() {
 void procesoAbrirPersiana(struct tm timeinfo, int &segundosAcumulados) {
     if (timeinfo.tm_hour >= 6 && timeinfo.tm_hour < 8) {
         if (segundosAcumulados >= 12) {
-            Serial.printf("Detenido desde abrir");
+            //Serial.println("Detenido desde abrir");
         } else {
             abrirPersiana();
             delay(2000);
@@ -93,7 +93,7 @@ void procesoAbrirPersiana(struct tm timeinfo, int &segundosAcumulados) {
 void procesoCerrarPersiana(struct tm timeinfo, int &segundosAcumulados) {
     if (timeinfo.tm_hour >= 20 && timeinfo.tm_hour < 23) {
         if (segundosAcumulados <= 0) {
-            Serial.printf("Detenido desde cerrar");
+            //Serial.println("Detenido desde cerrar");
         } else {
             cerrarPersiana();
             delay(2000);
