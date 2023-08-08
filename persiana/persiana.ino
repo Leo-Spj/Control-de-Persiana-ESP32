@@ -24,9 +24,8 @@ void setup() {
     // Configurar pin de salida para el motor
     pinMode(Abrir, OUTPUT);
     pinMode(Cerrar, OUTPUT);
-
-    digitalWrite(Abrir, LOW);
-    digitalWrite(Cerrar, LOW);
+        digitalWrite(Abrir, LOW);
+        digitalWrite(Cerrar, LOW);
 
     // Configurar botones
     pinMode(BotonAbrir, INPUT);
@@ -48,7 +47,19 @@ void setup() {
     while (!time(nullptr)) {
         Serial.println("Esperando...");
         delay(1000);
-    }
+    } 
+
+    // Imprimir solo la hora
+    struct tm timeinfo = getLocalTime();
+    Serial.println(&timeinfo, "%H:%M:%S");
+}
+
+struct tm getLocalTime() {
+    time_t now;
+    struct tm timeinfo;
+    time(&now);
+    localtime_r(&now, &timeinfo);
+    return timeinfo;
 }
 
 void abrirPersiana() {
@@ -66,68 +77,62 @@ void cerrarPersiana() {
     digitalWrite(Cerrar, HIGH);
 }
 
-void loop() {
-    time_t now;
-    struct tm timeinfo;
-    time(&now);
-    localtime_r(&now, &timeinfo);
-    
-    // Serial.printf("\nHora: %02d:%02d:%02d\n", timeinfo.tm_hour, timeinfo.tm_min, timeinfo.tm_sec);
-    
-    static int segundosAcumulados = 6; // punto medio para que se abra o cierre la persiana
-    static bool abriendo = false;
-    static bool cerrando = false;
-
-    // si la hora actual es mayor a las 6:00 am y menor a las 8:00 am, se abre la persiana
+void procesoAbrirPersiana(struct tm timeinfo, int &segundosAcumulados) {
     if (timeinfo.tm_hour >= 6 && timeinfo.tm_hour < 8) {
-        if (abriendo) {
-            if (segundosAcumulados >= 12) {
-                Serial.printf("Detenido desde abrir");
-            } else {
-                abrirPersiana();
-                delay(2000);
-                segundosAcumulados+=2;
-                Serial.printf("Abriendo, segundos acumulados: %d\n", segundosAcumulados);
-            }
+        if (segundosAcumulados >= 12) {
+            Serial.printf("Detenido desde abrir");
         } else {
-            abriendo = true;
-            cerrando = false;
+            abrirPersiana();
+            delay(2000);
+            segundosAcumulados += 2;
+            Serial.printf("Abriendo, segundos acumulados: %d\n", segundosAcumulados);
         }
     }
+}
 
-    // si la hora actual es mayor a las 8:00 pm y menor a las 11:00 pm, se cierra la persiana
+void procesoCerrarPersiana(struct tm timeinfo, int &segundosAcumulados) {
     if (timeinfo.tm_hour >= 20 && timeinfo.tm_hour < 23) {
-        if (cerrando) {
-            if (segundosAcumulados <= 0) {
-                Serial.printf("Detenido desde cerrar");
-            } else {
-                cerrarPersiana();
-                delay(2000);              
-                segundosAcumulados-=2;
-                Serial.printf("Cerrando, segundos acumulados: %d\n", segundosAcumulados);
-            }
+        if (segundosAcumulados <= 0) {
+            Serial.printf("Detenido desde cerrar");
         } else {
-            cerrando = true;
-            abriendo = false;
+            cerrarPersiana();
+            delay(2000);
+            segundosAcumulados -= 2;
+            Serial.printf("Cerrando, segundos acumulados: %d\n", segundosAcumulados);
         }
-    } 
-  
+    }
+}
 
-    // si no se presiona ningún botón, se detiene la persiana
-    digitalWrite(BotonAbrir, LOW);
-    digitalWrite(BotonCerrar, LOW);
-
-    // si se presiona el botón de abrir, se abre la persiana
+void accionBotonAbrir() {
     while (digitalRead(BotonAbrir) == HIGH) {
         abrirPersiana();
         Serial.println("Boton abrir");
-    } 
+    }
+}
 
-    // si se presiona el botón de cerrar, se cierra la persiana
+void accionBotonCerrar() {
     while (digitalRead(BotonCerrar) == HIGH) {
         cerrarPersiana();
         Serial.println("Boton cerrar");
     }
+}
+
+void loop() {
+    
+    struct tm timeinfo = getLocalTime();  
+    
+    // Serial.printf("\nHora: %02d:%02d:%02d\n", timeinfo.tm_hour, timeinfo.tm_min, timeinfo.tm_sec);
+    
+    static int segundosAcumulados = 6; // punto medio para que se abra o cierre la persiana
+    procesoAbrirPersiana(timeinfo, segundosAcumulados);
+    procesoCerrarPersiana(timeinfo, segundosAcumulados);
+  
+    // si no se presiona ningún botón, se detiene la persiana
+    digitalWrite(BotonAbrir, LOW);
+    digitalWrite(BotonCerrar, LOW);
+
+    accionBotonAbrir();
+    accionBotonCerrar();
 
     detenerPersiana(); // detener la persiana
     delay(200);
